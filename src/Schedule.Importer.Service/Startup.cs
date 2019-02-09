@@ -25,6 +25,7 @@ namespace Schedule.Importer.Service
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddScoped<IScheduleService, ScheduleService>();
+            services.AddScoped<IAtlassianHttpClient, AtlassianHttpClient>();
             services.AddSingleton<IAtlassianConfig>(Configuration.GetSection("Atlassian").Get<AtlassianConfig>());
         }
 

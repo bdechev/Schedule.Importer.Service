@@ -6,16 +6,16 @@ namespace Services
 {
     public class ScheduleService : IScheduleService
     {
-        private readonly IAtlassianConfig _atlassianConfig;
+        private readonly IAtlassianHttpClient _atlassianHttpClient;
 
-        public ScheduleService(IAtlassianConfig atlassianConfig)
+        public ScheduleService(IAtlassianHttpClient atlassianHttpClient)
         {
-            _atlassianConfig = atlassianConfig;
+            _atlassianHttpClient = atlassianHttpClient;
         }
 
         public async Task UpdateSchedule()
         {
-            
+            await _atlassianHttpClient.GetAttachments();
         }
     }
 }

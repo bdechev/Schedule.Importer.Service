@@ -15,3 +15,5 @@ C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\o
 C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\bin\Debug\netcoreapp2.1\Services.dll
 C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\bin\Debug\netcoreapp2.1\Services.pdb
 C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\obj\Debug\netcoreapp2.1\Schedule.Importer.Service.csproj.CopyComplete
+C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\bin\Debug\netcoreapp2.1\Dtos.dll
+C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\bin\Debug\netcoreapp2.1\Dtos.pdb
