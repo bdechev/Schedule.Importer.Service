@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28531.58
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schedule.Importer.Service", "Schedule.Importer.Service\Schedule.Importer.Service.csproj", "{6A2383DE-E7E4-4070-BF52-3BA57A8D2B74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Schedule.Importer.Service", "Schedule.Importer.Service\Schedule.Importer.Service.csproj", "{6A2383DE-E7E4-4070-BF52-3BA57A8D2B74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{CF5845D5-A1C0-43C2-A0E2-CCC1F2635178}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6A2383DE-E7E4-4070-BF52-3BA57A8D2B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A2383DE-E7E4-4070-BF52-3BA57A8D2B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A2383DE-E7E4-4070-BF52-3BA57A8D2B74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF5845D5-A1C0-43C2-A0E2-CCC1F2635178}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF5845D5-A1C0-43C2-A0E2-CCC1F2635178}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF5845D5-A1C0-43C2-A0E2-CCC1F2635178}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF5845D5-A1C0-43C2-A0E2-CCC1F2635178}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
