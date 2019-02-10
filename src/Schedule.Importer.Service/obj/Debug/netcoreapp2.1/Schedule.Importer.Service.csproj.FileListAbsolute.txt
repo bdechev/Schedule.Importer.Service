@@ -3,6 +3,10 @@ C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\b
 C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\bin\Debug\netcoreapp2.1\Schedule.Importer.Service.runtimeconfig.dev.json
 C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\bin\Debug\netcoreapp2.1\Schedule.Importer.Service.dll
 C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\bin\Debug\netcoreapp2.1\Schedule.Importer.Service.pdb
+C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\bin\Debug\netcoreapp2.1\Dtos.dll
+C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\bin\Debug\netcoreapp2.1\Services.dll
+C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\bin\Debug\netcoreapp2.1\Services.pdb
+C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\bin\Debug\netcoreapp2.1\Dtos.pdb
 C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\obj\Debug\netcoreapp2.1\Schedule.Importer.Service.csprojAssemblyReference.cache
 C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\obj\Debug\netcoreapp2.1\Schedule.Importer.Service.csproj.CoreCompileInputs.cache
 C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\obj\Debug\netcoreapp2.1\Schedule.Importer.Service.RazorAssemblyInfo.cache
@@ -10,10 +14,6 @@ C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\o
 C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\obj\Debug\netcoreapp2.1\Schedule.Importer.Service.AssemblyInfoInputs.cache
 C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\obj\Debug\netcoreapp2.1\Schedule.Importer.Service.AssemblyInfo.cs
 C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\obj\Debug\netcoreapp2.1\Schedule.Importer.Service.RazorTargetAssemblyInfo.cache
+C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\obj\Debug\netcoreapp2.1\Schedule.Importer.Service.csproj.CopyComplete
 C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\obj\Debug\netcoreapp2.1\Schedule.Importer.Service.dll
 C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\obj\Debug\netcoreapp2.1\Schedule.Importer.Service.pdb
-C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\bin\Debug\netcoreapp2.1\Services.dll
-C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\bin\Debug\netcoreapp2.1\Services.pdb
-C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\obj\Debug\netcoreapp2.1\Schedule.Importer.Service.csproj.CopyComplete
-C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\bin\Debug\netcoreapp2.1\Dtos.dll
-C:\Projects\Schedule.Importer.Service.Repository\src\Schedule.Importer.Service\bin\Debug\netcoreapp2.1\Dtos.pdb

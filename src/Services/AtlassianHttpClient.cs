@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using Schedule.Importer.Service.Configuration.Abstract;
 using Services.Abstract;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -15,26 +14,24 @@ namespace Services
 {
     public class AtlassianHttpClient : IAtlassianHttpClient
     {
-        private readonly HttpClient _httpClient;
-        private readonly IAtlassianConfig _atlassianConfig;
-        private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly HttpClient httpClient;
+        private readonly IAtlassianConfig atlassianConfig;
+        private readonly IHostingEnvironment hostingEnvironment;
 
         public AtlassianHttpClient(IAtlassianConfig atlassianConfig, IHostingEnvironment hostingEnvironment)
         {
-            _atlassianConfig = atlassianConfig;
-            _hostingEnvironment = hostingEnvironment;
-            _httpClient = new HttpClient();
+            this.atlassianConfig = atlassianConfig;
+            this.hostingEnvironment = hostingEnvironment;
+            httpClient = new HttpClient();
 
             // Setup Basic Authorization for the http client instance
             var byteArray = Encoding.ASCII.GetBytes($"{atlassianConfig.Username}:{atlassianConfig.ApiToken}");
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
         }
 
-        public async Task GetAttachments()
+        public async Task GetAttachments(string pageId)
         {
-            var pageId = "1148387756";
-
-            var response = await _httpClient.GetAsync($"{_atlassianConfig.Host}/wiki/rest/api/content/{pageId}/child/attachment");
+            var response = await httpClient.GetAsync($"{atlassianConfig.Host}/wiki/rest/api/content/{pageId}/child/attachment");
 
             if (response.IsSuccessStatusCode)
             {
@@ -44,30 +41,24 @@ namespace Services
                 try
                 {
                     var attachments = JsonConvert.DeserializeObject<Attachments>(result);
-                    var downloadsPath = $"{_hostingEnvironment.ContentRootPath}/../../downloads/";
-                    var directoryPath = $"Downloads_{DateTime.Today.Day}{DateTime.Today.Month}{DateTime.Today.Year}";
-
-                    if (!Directory.Exists(downloadsPath + directoryPath))
-                    {
-                        Directory.CreateDirectory(downloadsPath + directoryPath);
-                    }
+                    var downloadsPath = $"{hostingEnvironment.ContentRootPath}/../../downloads/";
 
                     foreach (var attachment in attachments.Results)
                     {
-                        var attachmentResponse = await _httpClient.GetAsync($"{_atlassianConfig.Host}{attachments._Links.Context}{attachment._Links.Download}");
+                        var attachmentResponse = await httpClient.GetAsync($"{atlassianConfig.Host}{attachments._Links.Context}{attachment._Links.Download}");
 
                         if (attachmentResponse.IsSuccessStatusCode)
                         {
                             var contentStream = await attachmentResponse.Content.ReadAsStreamAsync(); // get the actual content stream
 
-                            using (Stream stream = new FileStream($"{downloadsPath}{directoryPath}/{attachment.Title}", FileMode.Create, FileAccess.Write, FileShare.None, (int)contentStream.Length, true))
+                            using (Stream stream = new FileStream($"{downloadsPath}/{attachment.Title}", FileMode.Create, FileAccess.Write, FileShare.None, (int)contentStream.Length, true))
                             {
                                 await contentStream.CopyToAsync(stream);
                             }
                         }
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                 }
             }

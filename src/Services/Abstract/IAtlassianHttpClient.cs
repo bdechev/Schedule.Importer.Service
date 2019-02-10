@@ -4,6 +4,6 @@ namespace Services.Abstract
 {
     public interface IAtlassianHttpClient
     {
-        Task GetAttachments();
+        Task GetAttachments(string pageId);
     }
 }

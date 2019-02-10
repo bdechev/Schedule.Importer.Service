@@ -26,6 +26,8 @@ namespace Schedule.Importer.Service
 
             services.AddScoped<IScheduleService, ScheduleService>();
             services.AddScoped<IAtlassianHttpClient, AtlassianHttpClient>();
+            services.AddScoped<IScheduleParserService, ScheduleParserService>();
+            services.AddScoped<IOutlookService, OutlookService>();
             services.AddSingleton<IAtlassianConfig>(Configuration.GetSection("Atlassian").Get<AtlassianConfig>());
         }
 

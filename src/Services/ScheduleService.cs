@@ -1,21 +1,25 @@
-﻿using System.Threading.Tasks;
-using Schedule.Importer.Service.Configuration.Abstract;
-using Services.Abstract;
+﻿using Services.Abstract;
+using System.Threading.Tasks;
 
 namespace Services
 {
     public class ScheduleService : IScheduleService
     {
-        private readonly IAtlassianHttpClient _atlassianHttpClient;
+        private readonly IAtlassianHttpClient atlassianHttpClient;
+        private readonly IScheduleParserService scheduleParserService;
 
-        public ScheduleService(IAtlassianHttpClient atlassianHttpClient)
+        public ScheduleService(IAtlassianHttpClient atlassianHttpClient, IScheduleParserService scheduleParserService)
         {
-            _atlassianHttpClient = atlassianHttpClient;
+            this.atlassianHttpClient = atlassianHttpClient;
+            this.scheduleParserService = scheduleParserService;
         }
 
         public async Task UpdateSchedule()
         {
-            await _atlassianHttpClient.GetAttachments();
+            var pageId = "1148387756";
+            await atlassianHttpClient.GetAttachments(pageId);
+
+            var agenda = scheduleParserService.ParseSchedule();
         }
     }
 }

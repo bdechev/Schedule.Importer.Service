@@ -10,11 +10,11 @@ namespace Schedule.Importer.Service.Controllers
     [ApiController]
     public class ScheduleController : Controller
     {
-        private readonly IScheduleService _scheduleService;
+        private readonly IScheduleService scheduleService;
 
         public ScheduleController(IScheduleService scheduleService)
         {
-            _scheduleService = scheduleService;
+            this.scheduleService = scheduleService;
         }
 
         [HttpGet("/schedule")]
@@ -26,7 +26,7 @@ namespace Schedule.Importer.Service.Controllers
         [HttpPost("/schedule/{id}/update")]
         public async Task<IActionResult> Update(string id)
         {
-            await _scheduleService.UpdateSchedule();
+            await scheduleService.UpdateSchedule();
 
             return Ok();
         }
