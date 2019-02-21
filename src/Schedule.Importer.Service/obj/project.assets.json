@@ -26,6 +26,20 @@
           "lib/netstandard2.0/EPPlus.Core.dll": {}
         }
       },
+      "Ical.Net/4.1.10": {
+        "type": "package",
+        "dependencies": {
+          "NodaTime": "2.0.2",
+          "System.Reflection.TypeExtensions": "4.1.0",
+          "System.Runtime.Serialization.Primitives": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/Ical.Net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Ical.Net.dll": {}
+        }
+      },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
         "type": "package",
         "dependencies": {
@@ -2662,6 +2676,19 @@
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
         }
       },
+      "NodaTime/2.0.2": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "System.Runtime.Serialization.Xml": "4.1.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/NodaTime.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/NodaTime.dll": {}
+        }
+      },
       "Remotion.Linq/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -4448,7 +4475,8 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Dtos": "1.0.0",
-          "EPPlus.Core": "1.5.4"
+          "EPPlus.Core": "1.5.4",
+          "Ical.Net": "4.1.10"
         },
         "compile": {
           "bin/placeholder/Services.dll": {}
@@ -4479,6 +4507,25 @@
         "lib/netstandard1.3/EPPlus.Core.xml",
         "lib/netstandard2.0/EPPlus.Core.dll",
         "lib/netstandard2.0/EPPlus.Core.xml"
+      ]
+    },
+    "Ical.Net/4.1.10": {
+      "sha512": "1vqnZBZR4/9TJq/RiXiXQ2seDIlvf1/xebHhJd2HdNIRSQIWbghNCZKUwEIjSOdbWkGhA6YrHjDJm+0yeN4H0A==",
+      "type": "package",
+      "path": "ical.net/4.1.10",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ical.net.4.1.10.nupkg.sha512",
+        "ical.net.nuspec",
+        "lib/Ical.Net.xml",
+        "lib/net46/Ical.Net.dll",
+        "lib/net46/Ical.Net.pdb",
+        "lib/net46/Ical.Net.xml",
+        "lib/netstandard1.3/Ical.Net.deps.json",
+        "lib/netstandard1.3/Ical.Net.dll",
+        "lib/netstandard1.3/Ical.Net.pdb",
+        "lib/netstandard1.3/Ical.Net.xml"
       ]
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -7257,6 +7304,21 @@
         "lib/netstandard1.3/Newtonsoft.Json.Bson.xml",
         "newtonsoft.json.bson.1.0.1.nupkg.sha512",
         "newtonsoft.json.bson.nuspec"
+      ]
+    },
+    "NodaTime/2.0.2": {
+      "sha512": "JBPy6lkrwKF7z6BX1jdqgnSZ4w31W6kgoMsmOZXyFr/z/VGjR3gtjh/qixdmfsSCIa1YvL89dqIsW6Hvi+2SHQ==",
+      "type": "package",
+      "path": "nodatime/2.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/NodaTime.dll",
+        "lib/net45/NodaTime.xml",
+        "lib/netstandard1.3/NodaTime.dll",
+        "lib/netstandard1.3/NodaTime.xml",
+        "nodatime.2.0.2.nupkg.sha512",
+        "nodatime.nuspec"
       ]
     },
     "Remotion.Linq/2.2.0": {

@@ -55,6 +55,8 @@ namespace Services
                             {
                                 await contentStream.CopyToAsync(stream);
                             }
+
+                            contentStream.Close();
                         }
                     }
                 }

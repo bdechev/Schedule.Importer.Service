@@ -7,11 +7,13 @@ namespace Services
     {
         private readonly IAtlassianHttpClient atlassianHttpClient;
         private readonly IScheduleParserService scheduleParserService;
+        private readonly ICalService calService;
 
-        public ScheduleService(IAtlassianHttpClient atlassianHttpClient, IScheduleParserService scheduleParserService)
+        public ScheduleService(IAtlassianHttpClient atlassianHttpClient, IScheduleParserService scheduleParserService, ICalService calService)
         {
             this.atlassianHttpClient = atlassianHttpClient;
             this.scheduleParserService = scheduleParserService;
+            this.calService = calService;
         }
 
         public async Task UpdateSchedule()
@@ -20,6 +22,8 @@ namespace Services
             await atlassianHttpClient.GetAttachments(pageId);
 
             var agenda = scheduleParserService.ParseSchedule();
+
+            calService.CreateAppointments(agenda);
         }
     }
 }

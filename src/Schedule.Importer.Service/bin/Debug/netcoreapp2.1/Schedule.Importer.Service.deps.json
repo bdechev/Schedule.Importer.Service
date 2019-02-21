@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "15795de7bb500b5afac11c61e61a94e32e6450d6"
+    "signature": "8f445df76b07c79a17bf458c2b92cc5f8f6d4a31"
   },
   "compilationOptions": {
     "defines": [
@@ -60,6 +60,22 @@
         },
         "compile": {
           "lib/netstandard2.0/EPPlus.Core.dll": {}
+        }
+      },
+      "Ical.Net/4.1.10": {
+        "dependencies": {
+          "NodaTime": "2.0.2",
+          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Runtime.Serialization.Primitives": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Ical.Net.dll": {
+            "assemblyVersion": "4.1.8.0",
+            "fileVersion": "4.1.8.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard1.3/Ical.Net.dll": {}
         }
       },
       "Microsoft.AspNetCore.Razor.Design/2.1.2": {},
@@ -234,6 +250,21 @@
           "Microsoft.NETCore.Platforms": "2.1.0"
         }
       },
+      "NodaTime/2.0.2": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.3",
+          "System.Runtime.Serialization.Xml": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/NodaTime.dll": {
+            "assemblyVersion": "2.0.2.0",
+            "fileVersion": "2.0.2.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard1.3/NodaTime.dll": {}
+        }
+      },
       "System.Data.Common/4.3.0": {
         "dependencies": {
           "System.Collections": "4.3.0",
@@ -314,7 +345,8 @@
       "Services/1.0.0": {
         "dependencies": {
           "Dtos": "1.0.0",
-          "EPPlus.Core": "1.5.4"
+          "EPPlus.Core": "1.5.4",
+          "Ical.Net": "4.1.10"
         },
         "runtime": {
           "Services.dll": {}
@@ -3284,6 +3316,13 @@
       "path": "epplus.core/1.5.4",
       "hashPath": "epplus.core.1.5.4.nupkg.sha512"
     },
+    "Ical.Net/4.1.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1vqnZBZR4/9TJq/RiXiXQ2seDIlvf1/xebHhJd2HdNIRSQIWbghNCZKUwEIjSOdbWkGhA6YrHjDJm+0yeN4H0A==",
+      "path": "ical.net/4.1.10",
+      "hashPath": "ical.net.4.1.10.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Razor.Design/2.1.2": {
       "type": "package",
       "serviceable": true,
@@ -3339,6 +3378,13 @@
       "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "NodaTime/2.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JBPy6lkrwKF7z6BX1jdqgnSZ4w31W6kgoMsmOZXyFr/z/VGjR3gtjh/qixdmfsSCIa1YvL89dqIsW6Hvi+2SHQ==",
+      "path": "nodatime/2.0.2",
+      "hashPath": "nodatime.2.0.2.nupkg.sha512"
     },
     "System.Data.Common/4.3.0": {
       "type": "package",
