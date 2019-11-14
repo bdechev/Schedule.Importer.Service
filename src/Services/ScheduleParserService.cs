@@ -32,7 +32,8 @@ namespace Services
                     {
                         if (excelPackage.Workbook.Worksheets.Any())
                         {
-                            var worksheet = excelPackage.Workbook.Worksheets.Last();
+                            var currentMonth = DateTime.Now.ToString("MMMM").ToLower();
+                            var worksheet = excelPackage.Workbook.Worksheets.Single(x => x.Name.ToLower().Equals(currentMonth));
 
                             int rowCount = worksheet.Dimension.Rows;
 
@@ -42,7 +43,7 @@ namespace Services
                                 var nickname = worksheet.Cells[rowIndex, 1].Value;
                                 if (nickname == null)
                                 {
-                                    break;
+                                    continue;
                                 }
 
                                 var scheduledTime = new ScheduledTime();
