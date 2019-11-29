@@ -1,0 +1,32 @@
+{
+  "modules": {
+    "webhooks": [
+      {
+        "event": "attachment_updated",
+        "url": "/issue-created",
+        "excludeBody": false,
+        "filter": "project = HSA",
+        "propertyKeys": [
+          "propertyKey",
+          "otherPropertyKey"
+        ]
+      }
+    ]
+  },
+  "key": "my-app-key",
+  "name": "Schedule.Importer.Service",
+  "description": "Sync with schedule in confluence",
+  "vendor": {
+    "name": "Fourth",
+    "url": "http://www.example.com"
+  },
+  "baseUrl": "https://sis.com/confluence/sync",
+  "authentication": {
+    "type": "jwt"
+  },
+  "enableLicensing": false,
+  "scopes": [
+    "read",
+    "write"
+  ]
+}
