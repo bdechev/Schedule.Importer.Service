@@ -55,7 +55,7 @@ namespace Services
             var contentStream = new MemoryStream(bytesCalendar);
 
             var calendarsPath = $"{hostingEnvironment.ContentRootPath}/../../calendars/";
-            using (Stream stream = new FileStream($"{calendarsPath}/Full_OOH_Schedule_{DateTime.Now.ToString("MM/dd/yyyy").Replace("/", string.Empty)}.ics", FileMode.Create, FileAccess.Write, FileShare.None, (int)contentStream.Length, true))
+            using (Stream stream = new FileStream($"{calendarsPath}/Full_OOH_Schedule_{DateTime.Now.ToString("yyyy-MM-dd").Replace("/", string.Empty)}.ics", FileMode.Create, FileAccess.Write, FileShare.None, (int)contentStream.Length, true))
             {
                 await contentStream.CopyToAsync(stream);
             }
@@ -94,7 +94,7 @@ namespace Services
                 var engineerContentStream = new MemoryStream(engineerBytesCalendar);
 
                 var engineerCalendarsPath = $"{hostingEnvironment.ContentRootPath}/../../calendars/";
-                using (Stream stream = new FileStream($"{engineerCalendarsPath}/{engineer.Name}_OOH_Schedule__{DateTime.Now.ToString("MM/dd/yyyy").Replace("/", string.Empty)}.ics", FileMode.Create, FileAccess.Write, FileShare.None, (int)engineerContentStream.Length, true))
+                using (Stream stream = new FileStream($"{engineerCalendarsPath}/{engineer.Name}_OOH_Schedule__{DateTime.Now.ToString("yyyy-MM-dd").Replace("/", string.Empty)}.ics", FileMode.Create, FileAccess.Write, FileShare.None, (int)engineerContentStream.Length, true))
                 {
                     await engineerContentStream.CopyToAsync(stream);
                 }
