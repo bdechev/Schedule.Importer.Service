@@ -2,80 +2,48 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
-using System.Web.Http;
 using Services.Abstract;
 
 namespace Services
 {
     public class CalendarService : ICalendarService
     {
-        const string calendarFolder = "calendars";
+        private static readonly string BasePath = Directory.GetParent(Environment.CurrentDirectory).Parent?.FullName;
 
-        public Task<FileInfo> GetEmployeeLatestCalendar(string name)
+        public async Task<FileInfo> GetEmployeeLatestCalendarByNickname(string nickname)
         {
-            var basePath = Directory.GetParent(Environment.CurrentDirectory).Parent?.FullName;
-            if (basePath == null)
+            var availableCalendars = new DirectoryInfo(GetCalendarsPath()).GetFiles().Where(f => f.Name.ToLower().Contains(nickname.ToLower()));
+            var maxDate = new DateTime(2000, 01, 01);
+            FileInfo latestCalendar = null;
+            foreach (var availableCalendar in availableCalendars)
             {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                var currentCalendarDate = ExtractDateFromCalendarFileName(availableCalendar.Name);
+                if (currentCalendarDate > maxDate)
+                {
+                    maxDate = currentCalendarDate;
+                    latestCalendar = new FileInfo(availableCalendar.FullName);
+                }
             }
 
-            var calendarsPath = Path.Combine(basePath, calendarFolder);
-            var availableCalendars = new DirectoryInfo(calendarsPath).GetFiles();
-
-            var availableEmployeesNames = ExtractEmployeeNameFromFileName(availableCalendars);
-
-            FileInfo fileToReturn = null;
-            if (availableCalendars.Any() && availableEmployeesNames.Any(a => a.ToLower().Equals(name.ToLower())))
-            {
-                var latestDateFromFileName = GetLatestDateFromFileName(availableCalendars.Select(x => x.FullName));
-                fileToReturn = availableCalendars.First(x => x.FullName.Contains(latestDateFromFileName));
-            }
-
-            return Task.FromResult(fileToReturn);
+            return latestCalendar;
         }
 
         public IEnumerable<string> GetAvailableCalendars()
         {
-            var directoryInfo = Directory.GetParent(Environment.CurrentDirectory).Parent;
-            var availableCalendars = new FileInfo[] { };
-            if (directoryInfo != null)
-            {
-                var basePath = directoryInfo.FullName;
-                var calendarsPath = Path.Combine(basePath, calendarFolder);
-                availableCalendars = new DirectoryInfo(calendarsPath).GetFiles();
-            }
-
-            else
-            {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
-            }
-
+            var availableCalendars = new DirectoryInfo(GetCalendarsPath()).GetFiles();
             return availableCalendars.Select(x => x.Name);
         }
 
-        private string GetLatestDateFromFileName(IEnumerable<string> fileNamesList)
+        private static string GetCalendarsPath()
         {
-            var numbers = "0123456789".ToCharArray();
-            var datesList = new List<DateTime>();
-            foreach (var fileName in fileNamesList)
-            {
-                var indexFirstNumber = fileName.IndexOfAny(numbers);
-                var indexLastNumber = fileName.LastIndexOfAny(numbers);
-                var extractedDateFromFilename = fileName.Remove(indexLastNumber + 1).Substring(indexFirstNumber);
-                DateTime.TryParse(extractedDateFromFilename, out var date);
-                datesList.Add(date);
-            }
-
-            return datesList.OrderByDescending(x => x).First().ToString("yyyy-MM-dd");
+            var path = Path.Combine(BasePath, "calendars");
+            return path;
         }
 
-        private IEnumerable<string> ExtractEmployeeNameFromFileName(IEnumerable<FileInfo> files)
+        private static DateTime ExtractDateFromCalendarFileName(string calendarFilename)
         {
-            return files.Select(x => x.Name)
-                .Select(n => n.Remove(n.IndexOf('_'))).Distinct()
-                .Select(r => r.Replace(" ", string.Empty));
+            return DateTime.Parse(calendarFilename.Remove(calendarFilename.IndexOf('.')).Substring(calendarFilename.IndexOf('_') + 1));
         }
     }
 }

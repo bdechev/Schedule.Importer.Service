@@ -8,7 +8,7 @@ namespace Services.Abstract
 {
     public interface ICalendarService
     {
-        Task<FileInfo> GetEmployeeLatestCalendar(string nickname);
+        Task<FileInfo> GetEmployeeLatestCalendarByNickname(string nickname);
 
         IEnumerable<string> GetAvailableCalendars();
     }
