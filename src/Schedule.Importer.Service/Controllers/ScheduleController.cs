@@ -20,7 +20,7 @@ namespace Schedule.Importer.Service.Controllers
         [HttpGet("/schedule")]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new[] { "value1", "value2" };
         }
 
         [HttpPost("/schedule/{id}/update")]
