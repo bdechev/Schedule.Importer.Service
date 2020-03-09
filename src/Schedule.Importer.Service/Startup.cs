@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Schedule.Importer.Service.Configuration;
 using Schedule.Importer.Service.Configuration.Abstract;
 using Services;
 using Services.Abstract;
@@ -25,6 +24,7 @@ namespace Schedule.Importer.Service
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddScoped<IScheduleService, ScheduleService>();
+            services.AddScoped<ICalendarService, CalendarService>();
             services.AddScoped<IAtlassianHttpClient, AtlassianHttpClient>();
             services.AddScoped<IScheduleParserService, ScheduleParserService>();
             services.AddScoped<ICalService, CalService>();

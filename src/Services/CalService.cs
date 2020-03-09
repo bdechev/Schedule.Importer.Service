@@ -9,16 +9,17 @@ using Ical.Net.DataTypes;
 using Ical.Net.Serialization;
 using Microsoft.AspNetCore.Hosting;
 using Services.Abstract;
+using Services.Extensions;
 
 namespace Services
 {
     public class CalService : ICalService
     {
-        private readonly IHostingEnvironment hostingEnvironment;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
         public CalService(IHostingEnvironment hostingEnvironment)
         {
-            this.hostingEnvironment = hostingEnvironment;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         public async void CreateAppointments(Agenda agenda)
@@ -54,8 +55,8 @@ namespace Services
             var bytesCalendar = Encoding.UTF8.GetBytes(serializedCalendar);
             var contentStream = new MemoryStream(bytesCalendar);
 
-            var calendarsPath = $"{hostingEnvironment.ContentRootPath}/../../calendars/";
-            using (Stream stream = new FileStream($"{calendarsPath}/Full_OOH_Schedule_{DateTime.Now.ToString("MM/dd/yyyy").Replace("/", string.Empty)}.ics", FileMode.Create, FileAccess.Write, FileShare.None, (int)contentStream.Length, true))
+            var calendarsPath = $"{_hostingEnvironment.ContentRootPath}/../../calendars/";
+            using (Stream stream = new FileStream($"{calendarsPath}/Full_OOH_Schedule_{DateTime.Now.ToString("yyyy-MM-dd").Replace("/", string.Empty)}.ics", FileMode.Create, FileAccess.Write, FileShare.None, (int)contentStream.Length, true))
             {
                 await contentStream.CopyToAsync(stream);
             }
@@ -93,8 +94,8 @@ namespace Services
                 var engineerBytesCalendar = Encoding.UTF8.GetBytes(engineerSerializedCalendar);
                 var engineerContentStream = new MemoryStream(engineerBytesCalendar);
 
-                var engineerCalendarsPath = $"{hostingEnvironment.ContentRootPath}/../../calendars/";
-                using (Stream stream = new FileStream($"{engineerCalendarsPath}/{engineer.Name}_OOH_Schedule__{DateTime.Now.ToString("MM/dd/yyyy").Replace("/", string.Empty)}.ics", FileMode.Create, FileAccess.Write, FileShare.None, (int)engineerContentStream.Length, true))
+                var engineerCalendarsPath = $"{_hostingEnvironment.ContentRootPath}/../../calendars/";
+                using (Stream stream = new FileStream($"{engineerCalendarsPath}/{engineer.Nickname.RemoveSpaces()}-{engineer.Name.RemoveSpaces()}-OOH-Schedule_{DateTime.Now.ToString("yyyy-MM-dd").Replace("/", string.Empty)}.ics", FileMode.Create, FileAccess.Write, FileShare.None, (int)engineerContentStream.Length, true))
                 {
                     await engineerContentStream.CopyToAsync(stream);
                 }
